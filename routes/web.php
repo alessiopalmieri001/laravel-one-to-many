@@ -41,7 +41,7 @@ Route::prefix('admin')
 
     Route::resource('projects', AdminProjectController::class);
 
-    Route::resource('Types', AdminTypeController::class);
+    Route::resource('types', AdminTypeController::class);
 });
 
 require __DIR__.'/auth.php';

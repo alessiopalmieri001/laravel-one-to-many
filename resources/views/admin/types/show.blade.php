@@ -3,47 +3,47 @@
 @section('page-title', $type->title)
 
 @section('main-content')
-<section id="admin-show">
-    <div class="row">
-        <div class="col d-flex justify-content-center">
-            <div class="my-card">
-                <div class="my-card-body">
-                    <h1 class="text-center mb-5">
-                        {{ $type->title }}
-                    </h1>
+<section id="show-type-guest">
+    <div class="container">
 
-                    <p class="mb-3">
-                        {{ $type->content }}
+        <h1>
+            {{$type->name}}
+        </h1>
+
+        <div class="row justify-content-center">
+            @foreach ($projects as $project)
+            
+            <div class="col-3">
+                <div class="my-card">
+                    <h3>
+                        {{ $project->title }}
+                    </h3>
+
+                    <p>
+                        {{ $project->content }}
                     </p>
 
+                    @if ($project->type != null)
+                        <a href="{{ route('types.show', ['type'=>$project->type->slug]) }}">
+                            {{ $project->type->name }}
+                        </a>
+                    @else
+                        -
+                    @endif
+                    
                     <div>
-                        Creato il: 
-                        <span class="text-success">
-                            {{ $type->created_at->format('d/m/Y') }}
-                        </span>
-                        <br>
-                        Alle: 
-                        <span>
-                            {{ $type->created_at->format('H:i')  }}
-                        </span>
+                        <a href="{{ route('projects.show', ['project' => $project->slug]) }}" class="show-button">
+                            Mostra
+                        </a>
                     </div>
 
-                    @if ($type['updated_at'] != $type['created_at'])
-                        <div>
-                            Modificato il: 
-                            <span>
-                                {{ $type->updated_at->format('d/m/Y') }}
-                            </span>
-                            <br>
-                            Alle: 
-                            <span>
-                                {{ $type->updated_at->format('H:i')  }}
-                            </span>
-                        </div>
-                    @endif
                 </div>
             </div>
+            
+            @endforeach
         </div>
+        
+        
     </div>
 </section>
 @endsection

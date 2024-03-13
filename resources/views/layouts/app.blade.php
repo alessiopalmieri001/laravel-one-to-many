@@ -28,6 +28,11 @@
                             <a href="{{ route('admin.projects.index') }}">I nostri progetti</a>
 
                         </li>
+                        <li>
+
+                            <a href="{{ route('admin.types.index') }}">type</a>
+
+                        </li>
                     </li>
                 </ul>
 
